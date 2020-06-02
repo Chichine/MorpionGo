@@ -157,8 +157,8 @@ func CreateAll() {
 						restartButton := winc.NewPushButton(newWindow)
 						restartButton.SetFont(font)
 						restartButton.SetText("Restart")
-						restartButton.SetPos(200, 2)
-						restartButton.SetSize(150, 20)
+						restartButton.SetPos(2, 200)
+						restartButton.SetSize(150, 30)
 
 						restartButton.OnClick().Bind(func(e *winc.Event) {
 							newWindow.Close()
@@ -188,8 +188,8 @@ func CreateAll() {
 						restartButton := winc.NewPushButton(newWindow)
 						restartButton.SetFont(font)
 						restartButton.SetText("Restart")
-						restartButton.SetPos(200, 2)
-						restartButton.SetSize(150, 20)
+						restartButton.SetPos(2, 200)
+						restartButton.SetSize(150, 30)
 
 						restartButton.OnClick().Bind(func(e *winc.Event) {
 							newWindow.Close()
