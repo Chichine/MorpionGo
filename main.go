@@ -206,12 +206,12 @@ func CreateAll() {
 	mainWindow.Center()
 	mainWindow.Show()
 	mainWindow.OnClose().Bind(wndOnClose)
-
-	winc.RunMainLoop()
 }
 
 func main() {
 	CreateAll()
+
+	winc.RunMainLoop()
 }
 
 func wndOnClose(arg *winc.Event) {
