@@ -71,7 +71,7 @@ func CheckResult(m map[string]string) (Winner string) {
 	return
 }
 
-func main() {
+func CreateAll() {
 	mainWindow := winc.NewForm(nil)
 	mainWindow.SetSize(400, 300) // (width, height)
 	mainWindow.SetText("Morpion")
@@ -91,12 +91,24 @@ func main() {
 	txt.SetPos(2, 2)
 	txt.SetSize(150, 20)
 
+	resetButton := winc.NewPushButton(mainWindow)
+	resetButton.SetFont(font)
+	resetButton.SetText("Reset")
+	resetButton.SetPos(200, 2)
+	resetButton.SetSize(150, 20)
+
 	var numCase = 0
 	var numCaseCoche = 0
 
 	var m map[string]string
 
 	m = make(map[string]string)
+
+	resetButton.OnClick().Bind(func(e *winc.Event) {
+		mainWindow.Close()
+
+		CreateAll()
+	})
 
 	for x := 0; x < 3; x++ {
 		for y := 0; y < 3; y++ {
@@ -142,6 +154,17 @@ func main() {
 						newWindow.Center()
 						newWindow.Show()
 
+						restartButton := winc.NewPushButton(newWindow)
+						restartButton.SetFont(font)
+						restartButton.SetText("Restart")
+						restartButton.SetPos(200, 2)
+						restartButton.SetSize(150, 20)
+
+						restartButton.OnClick().Bind(func(e *winc.Event) {
+							newWindow.Close()
+							CreateAll()
+						})
+
 						newWindow.OnClose().Bind(nwndOnClose)
 					} else if Winner != "NoWinner" {
 
@@ -162,6 +185,17 @@ func main() {
 						newWindow.Center()
 						newWindow.Show()
 
+						restartButton := winc.NewPushButton(newWindow)
+						restartButton.SetFont(font)
+						restartButton.SetText("Restart")
+						restartButton.SetPos(200, 2)
+						restartButton.SetSize(150, 20)
+
+						restartButton.OnClick().Bind(func(e *winc.Event) {
+							newWindow.Close()
+							CreateAll()
+						})
+
 						newWindow.OnClose().Bind(nwndOnClose)
 					}
 				}
@@ -174,6 +208,10 @@ func main() {
 	mainWindow.OnClose().Bind(wndOnClose)
 
 	winc.RunMainLoop()
+}
+
+func main() {
+	CreateAll()
 }
 
 func wndOnClose(arg *winc.Event) {
